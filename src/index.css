@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#09090b] text-white flex flex-col h-screen items-center justify-center relative overflow-hidden;
+}
