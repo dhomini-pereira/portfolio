@@ -22,3 +22,5 @@ jobs:
           projectName: ${{ secrets.PROJECT_NAME }}
           directory: ${{ secrets.PROJECT_BUILD }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          production: true
+          branch: main
