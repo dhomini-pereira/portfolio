@@ -5,3 +5,34 @@
 body {
   @apply bg-[#09090b] text-white flex flex-col h-screen items-center justify-center relative overflow-hidden;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estiliza a parte da barra de rolagem */
+::-webkit-scrollbar {
+  z-index: 1000;
+  width: 7px; /* Largura da scrollbar */
+  height: 12px; /* Altura da scrollbar (para scroll horizontal) */
+}
+
+/* Estiliza a parte "de fundo" da barra de rolagem */
+::-webkit-scrollbar-track {
+  z-index: 1000;
+  background-color: #f1f1f1; /* Cor de fundo da track */
+  border-radius: 10px; /* Arredondamento dos cantos */
+}
+
+/* Estiliza a parte "móvel" da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  z-index: 1000;
+  background-color: #888; /* Cor da parte da thumb */
+  border-radius: 10px; /* Arredondamento da thumb */
+}
+
+/* Estiliza a parte da thumb quando estiver sendo "interagida" */
+::-webkit-scrollbar-thumb:hover {
+  z-index: 1000;
+  background-color: #555; /* Cor da thumb ao passar o mouse */
+}

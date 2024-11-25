@@ -33,15 +33,17 @@ export default function Layout({ children }: { children: ReactNode }) {
         onClick={toggleNavbar}
       />
       <div
-        className={`max-md:flex flex-col w-screen absolute z-30 left-0 pt-7 transition-all duration-500 -top-96 max-md:${
-          activeNavbar ? "top-0" : "-top-96"
+        className={`max-md:flex flex-col z-30 w-screen absolute left-0 transition-all duration-500 -top-96 ${
+          activeNavbar ? "max-md:top-0" : ""
         }`}
       >
         <Navbar />
       </div>
       <div className="flex flex-row gap-3 overflow-hidden">
         <Sidebar />
-        {children}
+        <div className="flex flex-col max-md:w-screen overflow-y-auto h-screen overflow-x-hidden">
+          {children}
+        </div>
       </div>
     </>
   );

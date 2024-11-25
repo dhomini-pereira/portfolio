@@ -1,14 +1,13 @@
-import photo from "../../../public/foto-port.jpg";
 import Icon from "../Icon/Icon";
 
 export default function Sidebar() {
   return (
-    <section className="w-60 bg-[#18181B] m-2 my-3 rounded-l-lg rounded-r-2xl block max-md:hidden z-20">
+    <section className="w-3/12 bg-[#18181B] m-2 my-3 rounded-l-lg rounded-r-2xl block max-md:hidden z-20">
       <div className="py-4 px-3">
         <div className="flex gap-6 items-center">
           <img
             className="rounded-full size-10"
-            src={photo}
+            src={"/public/foto-port.jpg?url"}
             alt="profile picture"
           />
           <span>Dhomini Pereira</span>
@@ -22,25 +21,25 @@ export default function Sidebar() {
             <span className="text-sm">Home</span>
           </a>
           <a
-            href="#sobre"
+            href="#about"
             className="box-border flex flex-row hover:bg-[#252528] hover:border-[#3E3E41] border-[1px] border-transparent cursor-pointer py-3 rounded-lg items-center gap-3 px-3 h-11 transition-all duration-200"
           >
             <Icon iconName="profile" className="size-4" />
             <span className="text-sm">Sobre mim</span>
           </a>
           <a
-            href="#projetos"
+            href="#experience"
+            className="box-border flex flex-row hover:bg-[#252528] hover:border-[#3E3E41] border-[1px] border-transparent cursor-pointer py-3 rounded-lg items-center gap-3 px-3 h-11 transition-all duration-200"
+          >
+            <Icon iconName="file" className="size-4" />
+            <span className="text-sm">Experiência</span>
+          </a>
+          <a
+            href="#projects"
             className="box-border flex flex-row hover:bg-[#252528] hover:border-[#3E3E41] border-[1px] border-transparent cursor-pointer py-3 rounded-lg items-center gap-3 px-3 h-11 transition-all duration-200"
           >
             <Icon iconName="briefcase" className="size-4" />
             <span className="text-sm">Projetos</span>
-          </a>
-          <a
-            href="#curriculo"
-            className="box-border flex flex-row hover:bg-[#252528] hover:border-[#3E3E41] border-[1px] border-transparent cursor-pointer py-3 rounded-lg items-center gap-3 px-3 h-11 transition-all duration-200"
-          >
-            <Icon iconName="file" className="size-4" />
-            <span className="text-sm">Currículo</span>
           </a>
           <div className="flex flex-col gap-1 mt-4">
             <span className="ml-3 text-sm">Contatos</span>
