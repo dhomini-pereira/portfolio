@@ -2,7 +2,7 @@ import Icon from "../Icon/Icon";
 
 export default function Sidebar() {
   return (
-    <section className="w-3/12 bg-[#18181B] m-2 my-3 rounded-l-lg rounded-r-2xl block max-md:hidden z-20">
+    <section className="w-80 bg-[#18181B] m-2 my-3 rounded-l-lg rounded-r-2xl block max-md:hidden z-20">
       <div className="py-4 px-3">
         <div className="flex gap-6 items-center">
           <img

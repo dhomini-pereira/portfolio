@@ -2,7 +2,7 @@ import Icon from "../../components/Icon/Icon";
 
 export default function Home() {
   return (
-    <section id="home" className="z-20 min-h-screen md:w-full mt-3 mr-3 flex flex-col justify-center items-center">
+    <section id="home" className="z-20 min-h-screen w-full mt-3 mr-3 flex flex-col justify-center items-center">
       <p className="w-3/5 max-md:w-full text-4xl font-bold max-md:hidden">
         Olá, me chamo Dhomini Pereira. Sou um desenvolvedor Fullstack
       </p>

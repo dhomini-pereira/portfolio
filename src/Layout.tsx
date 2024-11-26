@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const toggleNavbar = () => setActiveNavbar(!activeNavbar);
 
   return (
-    <>
+    <div className="relative overflow-hidden">
       <Icon
         iconName="polygon"
         className="icon-blink absolute top-0 right-0 z-10"
@@ -39,12 +39,12 @@ export default function Layout({ children }: { children: ReactNode }) {
       >
         <Navbar />
       </div>
-      <div className="flex flex-row gap-3 overflow-hidden">
+      <div className="flex flex-row gap-3 overflow-hidden w-full">
         <Sidebar />
-        <div className="flex flex-col max-md:w-screen overflow-y-auto h-screen overflow-x-hidden">
+        <div className="flex flex-col w-full overflow-y-auto h-screen overflow-x-hidden scroll-smooth z-20">
           {children}
         </div>
       </div>
-    </>
+    </div>
   );
 }
