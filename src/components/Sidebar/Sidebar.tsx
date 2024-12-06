@@ -7,7 +7,7 @@ export default function Sidebar() {
         <div className="flex gap-6 items-center">
           <img
             className="rounded-full size-10"
-            src={"/public/foto-port.jpg?url"}
+            src={"foto-port.jpg"}
             alt="profile picture"
           />
           <span>Dhomini Pereira</span>

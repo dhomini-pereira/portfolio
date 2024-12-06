@@ -1,8 +1,9 @@
+import Container from "../../components/Container/Container";
 import Icon from "../../components/Icon/Icon";
 
 export default function Home() {
   return (
-    <section id="home" className="z-20 min-h-screen w-full mt-3 mr-3 flex flex-col justify-center items-center">
+    <Container section="home" className="max-md:flex flex-col max-md:w-full max-md:items-center">
       <p className="w-3/5 max-md:w-full text-4xl font-bold max-md:hidden">
         Olá, me chamo Dhomini Pereira. Sou um desenvolvedor Fullstack
       </p>
@@ -44,6 +45,6 @@ export default function Home() {
           <span className="text-sm">WhatsApp</span>
         </a>
       </div>
-    </section>
+    </Container>
   );
 }
