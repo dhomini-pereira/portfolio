@@ -1,50 +1,83 @@
-# React + TypeScript + Vite
+<h1 align="center">📌 Dhomini Pereira - Portfólio</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel"/>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">Meu portfólio pessoal desenvolvido com React, Vite e TypeScript. Aqui compartilho projetos, habilidades e experiências profissionais.</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Este projeto foi desenvolvido com as seguintes tecnologias:
 
-- Configure the top-level `parserOptions` property like this:
+- ⚛️ **React**
+- ⚡ **Vite**
+- 🟦 **TypeScript**
+- 🎨 **CSS Modules / Tailwind (caso esteja usando)**
+- ☁️ **Vercel** (deploy)
+- 🌐 **Cloudflare** (otimização e segurança)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🧠 Sobre Mim
+
+Desenvolvedor Web Full Stack apaixonado por criar soluções modernas, funcionais e escaláveis. Tenho experiência sólida com:
+
+- 🧩 **Front-end**: Angular, React, Next.js  
+- 📲 **Mobile**: React Native  
+- 🛠 **Back-end**: Node.js, TypeScript, Java  
+- ☁️ **Infraestrutura**: AWS, Cloudflare, Vercel  
+- 📈 **Metodologias Ágeis**: Scrum, RAD  
+
+Atualmente trabalhando como desenvolvedor fullstack, com foco em APIs, componentização, boas práticas de código e performance.
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+📦 portfolio/
+├── public/
+├── src/
+│ ├── assets/
+│ ├── components/
+│ ├── pages/
+│ ├── styles/
+│ └── main.tsx
+├── index.html
+├── tsconfig.json
+├── vite.config.ts
+└── package.json
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🧪 Como rodar localmente
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+# Clone o repositório
+git clone https://github.com/dhomini-pereira/portfolio.git
+
+# Acesse a pasta
+cd portfolio
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
 ```
+
+## 🌍 Acesse Online
+
+🔗 [Clique aqui para ver o portfólio ao vivo]("https://dhomini-pereira.pages.dev")
+
+## 📬 Contato
+
+📄 Licença
+Este projeto está sob a licença MIT.

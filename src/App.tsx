@@ -1,16 +1,17 @@
-import Layout from "./Layout";
-import Home from "./sections/home/Home";
-import Projects from "./sections/projects/Projects";
-import About from "./sections/about/About";
-import Experience from "./sections/experience/Experience";
+import { Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/home";
 
-export default function App() {
+function App() {
   return (
-    <Layout>
-      <Home />
-      <About />
-      <Experience />
-      <Projects />
-    </Layout>
+    <Suspense fallback={<p>Loading...</p>}>
+      <>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </>
+    </Suspense>
   );
 }
+
+export default App;
