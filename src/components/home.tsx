@@ -26,12 +26,18 @@ import {
   SiNestjs,
   SiPostgresql,
   SiMysql,
+  SiDocker,
+  SiGit,
+  SiMongodb,
+  SiAmazondynamodb,
+  SiOracle,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Navigation from "./Navigation";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -108,65 +114,55 @@ const Home = () => {
     },
   ];
 
-  const skills = [
-    { name: "Angular", icon: SiAngular, color: "from-red-500 to-red-600" },
-    { name: "ReactJS", icon: SiReact, color: "from-blue-500 to-blue-600" },
-    { name: "NextJS", icon: SiNextdotjs, color: "from-gray-700 to-gray-800" },
+  const skillCategories = [
     {
-      name: "TypeScript",
-      icon: SiTypescript,
-      color: "from-blue-600 to-blue-700",
-    },
-    { name: "React Native", icon: SiReact, color: "from-cyan-500 to-cyan-600" },
-    { name: "Java", icon: FaJava, color: "from-orange-500 to-orange-600" },
-    {
-      name: "NestJS",
-      icon: SiNestjs,
-      color: "from-red-500 to-red-600",
+      title: "Frontend",
+      skills: [
+        { name: "Angular", icon: SiAngular, color: "from-red-500 to-red-600" },
+        { name: "ReactJS", icon: SiReact, color: "from-blue-500 to-blue-600" },
+        { name: "NextJS", icon: SiNextdotjs, color: "from-gray-700 to-gray-800" },
+        { name: "React Native", icon: SiReact, color: "from-cyan-500 to-cyan-600" },
+        { name: "TypeScript", icon: SiTypescript, color: "from-blue-600 to-blue-700" },
+        { name: "JavaScript", icon: SiJavascript, color: "from-yellow-500 to-yellow-600" },
+      ],
     },
     {
-      name: "JavaScript",
-      icon: SiJavascript,
-      color: "from-yellow-500 to-yellow-600",
+      title: "Backend",
+      skills: [
+        { name: "Node.js", icon: SiNodedotjs, color: "from-green-500 to-green-600" },
+        { name: "NestJS", icon: SiNestjs, color: "from-red-500 to-red-600" },
+        { name: "Java", icon: FaJava, color: "from-orange-500 to-orange-600" },
+        { name: "Python", icon: SiPython, color: "from-blue-500 to-blue-700" },
+        { name: "Rust", icon: SiRust, color: "from-orange-500 to-orange-600" },
+      ],
     },
     {
-      name: "Node.js",
-      icon: SiNodedotjs,
-      color: "from-green-500 to-green-600",
+      title: "Banco de Dados",
+      skills: [
+        { name: "PostgreSQL", icon: SiPostgresql, color: "from-blue-800 to-blue-900" },
+        { name: "MySQL", icon: SiMysql, color: "from-blue-400 to-blue-500" },
+        { name: "MongoDB", icon: SiMongodb, color: "from-green-600 to-green-800" },
+        { name: "DynamoDB", icon: SiAmazondynamodb, color: "from-yellow-400 to-yellow-600" },
+        { name: "OracleDB", icon: SiOracle, color: "from-red-700 to-red-900" },
+      ],
     },
     {
-      name: "Rust",
-      icon: SiRust,
-      color: "from-orange-500 to-orange-600",
+      title: "Cloud/DevOps",
+      skills: [
+        { name: "AWS", icon: SiAmazonwebservices, color: "from-orange-400 to-orange-500" },
+        { name: "CloudFlare", icon: SiCloudflare, color: "from-orange-500 to-orange-600" },
+        { name: "Vercel", icon: SiVercel, color: "from-black to-gray-800" },
+        { name: "Docker", icon: SiDocker, color: "from-blue-400 to-blue-600" },
+        { name: "Git", icon: SiGit, color: "from-orange-700 to-orange-900" },
+      ],
     },
     {
-      name: "Python",
-      icon: SiPython,
-      color: "from-blue-500 to-blue-700",
+      title: "Metodologias",
+      skills: [
+        { name: "Scrum", icon: Users, color: "from-purple-500 to-purple-600" },
+        { name: "RAD", icon: Settings, color: "from-indigo-500 to-indigo-600" },
+      ],
     },
-    {
-      name: "PostgreSQL",
-      icon: SiPostgresql,
-      color: "from-blue-800 to-blue-900",
-    },
-    {
-      name: "MySQL",
-      icon: SiMysql,
-      color: "from-blue-400 to-blue-500",
-    },
-    {
-      name: "AWS",
-      icon: SiAmazonwebservices,
-      color: "from-orange-400 to-orange-500",
-    },
-    {
-      name: "CloudFlare",
-      icon: SiCloudflare,
-      color: "from-orange-500 to-orange-600",
-    },
-    { name: "Vercel", icon: SiVercel, color: "from-black to-gray-800" },
-    { name: "Scrum", icon: Users, color: "from-purple-500 to-purple-600" },
-    { name: "RAD", icon: Settings, color: "from-indigo-500 to-indigo-600" },
   ];
 
   return (
@@ -246,7 +242,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Section */}
       <SectionContainer id="about" title="Sobre">
         <div className="grid md:grid-cols-2 gap-8">
           <div>
@@ -287,9 +282,54 @@ const Home = () => {
         </div>
       </SectionContainer>
 
-      {/* Experience Section */}
       <SectionContainer id="experience" title="Experiência">
-        <div className="space-y-12">
+        <div className="md:hidden">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="iblue">
+              <AccordionTrigger>IBLUE CONSULTING</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-muted-foreground mb-2">
+                  Desenvolvedor fullstack junior | abril/2025 até o momento
+                </p>
+                <ul className="list-disc list-inside space-y-1 mb-2">
+                  <li>Desenvolvimento e manutenção de APIs utilizando Node.js e TypeScript</li>
+                  <li>Criação de interfaces com Angular</li>
+                  <li>Consumo e integração de APIs RESTful</li>
+                  <li>Participação em cerimônias ágeis (daily, planning, review)</li>
+                  <li>Colaboração em times multidisciplinares utilizando versionamento com Git</li>
+                  <li>Apoio na resolução de bugs e melhorias de performance</li>
+                  <li>Foco em boas práticas de código, componentização e reaproveitamento</li>
+                  <li>Evolução contínua através de estudos, pair programming e code reviews</li>
+                  <li>Utilização da AWS para implementação de serviços e gerenciamento de recursos</li>
+                  <li>Modelagem de solução e fluxo de projetos</li>
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="brasilcap">
+              <AccordionTrigger>BRASILCAP CAPITALIZAÇÃO S.A.</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-muted-foreground mb-2">
+                  Estágio - Desenvolvimento web | abril/2023 à abril/2025
+                </p>
+                <ul className="list-disc list-inside space-y-1 mb-2">
+                  <li>Suporte na realização de manutenções corretivas e evolutivas em sistemas financeiros para gestão e análise de dados, além de plataformas internas de monitoramento (dashboards e relatórios) para acompanhamento operacional</li>
+                  <li>Apoio na criação de soluções para automatização de processos de negócios, utilizando Node.js para execução assíncrona e angular para desenvolvimento de interfaces interativas com integração de APIs</li>
+                  <li>Implementação de melhorias nas plataformas, integração (API) e automatização de processos</li>
+                </ul>
+                <div className="mt-4">
+                  <h4 className="font-medium">Principais Resultados:</h4>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Desenvolvimento e manutenção de sistemas em Angular e TypeScript, melhorando a eficiência de processos internos</li>
+                    <li>Otimização APIs RESTful, reduzindo o tempo de resposta em 97%</li>
+                    <li>Colaboração em equipes ágeis (Scrum) para entregar soluções dentro dos prazos estabelecidos</li>
+                    <li>Automatização das integrações e fluxos utilizando AWS</li>
+                  </ul>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+        <div className="hidden md:block space-y-12">
           <div className="border-l-2 border-primary pl-6 relative">
             <div className="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1"></div>
             <h3 className="text-xl font-semibold">IBLUE CONSULTING</h3>
@@ -297,76 +337,35 @@ const Home = () => {
               Desenvolvedor fullstack junior | abril/2025 até o momento
             </p>
             <ul className="list-disc list-inside space-y-1">
-              <li>
-                Desenvolvimento e manutenção de APIs utilizando Node.js e
-                TypeScript
-              </li>
+              <li>Desenvolvimento e manutenção de APIs utilizando Node.js e TypeScript</li>
               <li>Criação de interfaces com Angular</li>
               <li>Consumo e integração de APIs RESTful</li>
-              <li>
-                Participação em cerimônias ágeis (daily, planning, review)
-              </li>
-              <li>
-                Colaboração em times multidisciplinares utilizando versionamento
-                com Git
-              </li>
+              <li>Participação em cerimônias ágeis (daily, planning, review)</li>
+              <li>Colaboração em times multidisciplinares utilizando versionamento com Git</li>
               <li>Apoio na resolução de bugs e melhorias de performance</li>
-              <li>
-                Foco em boas práticas de código, componentização e
-                reaproveitamento
-              </li>
-              <li>
-                Evolução contínua através de estudos, pair programming e code
-                reviews
-              </li>
-              <li>
-                Utilização da AWS para implementação de serviços e gerenciamento
-                de recursos
-              </li>
+              <li>Foco em boas práticas de código, componentização e reaproveitamento</li>
+              <li>Evolução contínua através de estudos, pair programming e code reviews</li>
+              <li>Utilização da AWS para implementação de serviços e gerenciamento de recursos</li>
               <li>Modelagem de solução e fluxo de projetos</li>
             </ul>
           </div>
-
           <div className="border-l-2 border-primary pl-6 relative">
             <div className="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1"></div>
-            <h3 className="text-xl font-semibold">
-              BRASILCAP CAPITALIZAÇÃO S.A.
-            </h3>
+            <h3 className="text-xl font-semibold">BRASILCAP CAPITALIZAÇÃO S.A.</h3>
             <p className="text-muted-foreground mb-2">
               Estágio - Desenvolvimento web | abril/2023 à abril/2025
             </p>
             <ul className="list-disc list-inside space-y-1">
-              <li>
-                Suporte na realização de manutenções corretivas e evolutivas em
-                sistemas financeiros para gestão e análise de dados, além de
-                plataformas internas de monitoramento (dashboards e relatórios)
-                para acompanhamento operacional
-              </li>
-              <li>
-                Apoio na criação de soluções para automatização de processos de
-                negócios, utilizando Node.js para execução assíncrona e angular
-                para desenvolvimento de interfaces interativas com integração de
-                APIs
-              </li>
-              <li>
-                Implementação de melhorias nas plataformas, integração (API) e
-                automatização de processos
-              </li>
+              <li>Suporte na realização de manutenções corretivas e evolutivas em sistemas financeiros para gestão e análise de dados, além de plataformas internas de monitoramento (dashboards e relatórios) para acompanhamento operacional</li>
+              <li>Apoio na criação de soluções para automatização de processos de negócios, utilizando Node.js para execução assíncrona e angular para desenvolvimento de interfaces interativas com integração de APIs</li>
+              <li>Implementação de melhorias nas plataformas, integração (API) e automatização de processos</li>
             </ul>
             <div className="mt-4">
               <h4 className="font-medium">Principais Resultados:</h4>
               <ul className="list-disc list-inside space-y-1">
-                <li>
-                  Desenvolvimento e manutenção de sistemas em Angular e
-                  TypeScript, melhorando a eficiência de processos internos
-                </li>
-                <li>
-                  Otimização APIs RESTful, reduzindo o tempo de resposta em 97%
-                </li>
-                <li>
-                  Colaboração em equipes ágeis (Scrum) para entregar soluções
-                  dentro dos prazos estabelecidos
-                </li>
+                <li>Desenvolvimento e manutenção de sistemas em Angular e TypeScript, melhorando a eficiência de processos internos</li>
+                <li>Otimização APIs RESTful, reduzindo o tempo de resposta em 97%</li>
+                <li>Colaboração em equipes ágeis (Scrum) para entregar soluções dentro dos prazos estabelecidos</li>
                 <li>Automatização das integrações e fluxos utilizando AWS</li>
               </ul>
             </div>
@@ -375,51 +374,70 @@ const Home = () => {
       </SectionContainer>
 
       <SectionContainer id="skills" title="Habilidades">
-        <div className="flex justify-center">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 max-w-7xl w-full">
-            {skills.map((skill, index) => {
-              const IconComponent = skill.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 100,
-                  }}
-                  viewport={{ once: true }}
-                  whileHover={{
-                    scale: 1.05,
-                    y: -5,
-                    transition: { duration: 0.3 },
-                  }}
-                >
-                  <Card className="h-32 relative overflow-hidden group cursor-pointer bg-gradient-to-br from-background to-background/95 border-2 border-border/50 hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-500 backdrop-blur-sm">
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-
-                    <CardContent className="p-4 h-full flex flex-col items-center justify-center relative z-10">
-                      <div
-                        className={`p-3 rounded-full bg-gradient-to-br ${skill.color} mb-3 group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <IconComponent className="h-5 w-5 text-white" key={index} />
+        <div className="flex flex-col gap-3 md:hidden">
+          {skillCategories.map(category => (
+            <div key={category.title} className="mb-2">
+              <h3 className="text-xs font-bold mb-1 text-primary">{category.title}</h3>
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                {category.skills.map(skill => (
+                  <div key={category.title + '-' + skill.name} className="min-w-[60px] flex flex-col items-center">
+                    <div className="p-2 rounded-full bg-gradient-to-br from-background to-background/95 border-2 border-border/50 hover:border-primary/50 shadow-lg transition-all duration-500 backdrop-blur-sm">
+                      <div className={`p-1 rounded-full bg-gradient-to-br ${skill.color} mb-1 group-hover:scale-110 transition-transform duration-300`}>
+                        <skill.icon className="h-3 w-3 text-white" />
                       </div>
-                      <h3 className="text-sm font-semibold text-center text-foreground group-hover:text-primary transition-colors duration-300">
-                        {skill.name}
-                      </h3>
-                    </CardContent>
-                    <div
-                      className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${skill.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}
-                    />
-                  </Card>
-                </motion.div>
-              );
-            })}
+                    </div>
+                    <span className="text-[10px]">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="hidden md:block">
+          <div className="flex flex-col gap-8">
+            {skillCategories.map((category, catIdx) => (
+              <div key={catIdx} className="mb-6">
+                <h3 className="text-xl font-bold mb-4 text-primary">{category.title}</h3>
+                <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 max-w-7xl w-full">
+                  {category.skills.map((skill, index) => {
+                    const IconComponent = skill.icon;
+                    return (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{
+                          duration: 0.6,
+                          delay: index * 0.1,
+                          type: "spring",
+                          stiffness: 100,
+                        }}
+                        viewport={{ once: true }}
+                        whileHover={{
+                          scale: 1.05,
+                          y: -5,
+                          transition: { duration: 0.3 },
+                        }}
+                      >
+                        <Card className="h-20 md:h-28 lg:h-32 relative overflow-hidden group bg-gradient-to-br from-background to-background/95 border-2 border-border/50 hover:border-primary/50 shadow-lg hover:shadow-2xl transition-all duration-500 backdrop-blur-sm">
+                          <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                          <CardContent className="p-2 md:p-4 h-full flex flex-col items-center justify-center relative z-10">
+                            <div className={`p-2 md:p-3 rounded-full bg-gradient-to-br ${skill.color} mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                              <IconComponent className="h-4 w-4 md:h-5 md:w-5 text-white" />
+                            </div>
+                            <h3 className="text-xs md:text-sm font-semibold text-center text-foreground group-hover:text-primary transition-colors duration-300">
+                              {skill.name}
+                            </h3>
+                          </CardContent>
+                          <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${skill.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
+                        </Card>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </SectionContainer>
@@ -497,8 +515,6 @@ const Home = () => {
           </div>
         </div>
       </SectionContainer>
-
-      {/* Footer */}
       <footer className="py-8 border-t text-center">
         <p className="text-muted-foreground">
           © {new Date().getFullYear()} Dhomini Pereira. Todos os direitos
